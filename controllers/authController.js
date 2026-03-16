@@ -1,5 +1,6 @@
 import axios from "axios";
 import { APP_ID, APP_SECRET, REDIRECT_URI } from "../config/config.js";
+import { setTokens } from "../config/tokenStore.js";
 
 export const handleAuthCallback = async (req, res) => {
   const { code } = req.query;
@@ -68,10 +69,11 @@ export const handleAuthCallback = async (req, res) => {
 
     const pageId = linkedPage.id;
     const pageAccessToken = linkedPage.access_token;
-    console.log("pageId", pageId);
-    console.log("pageAccessToken", pageAccessToken);
     const igId = linkedPage.instagram_business_account.id;
     const igUsername = linkedPage.instagram_business_account.username;
+
+    // Save tokens so webhook controller can use them
+    setTokens({ pageAccessToken, pageId, igUserId: igId, igUsername });
 
 
 
@@ -81,7 +83,7 @@ export const handleAuthCallback = async (req, res) => {
       {},
       {
         params: {
-            subscribed_fields: "messages,message_reactions,messaging_postbacks",
+            subscribed_fields: "messages,message_reactions,messaging_postbacks,feed",
           access_token: pageAccessToken
         }
       }
