@@ -9,7 +9,3 @@ export const VERIFY_TOKEN = process.env.VERIFY_TOKEN;
 // Note: This must match exactly what you put in the Meta Dashboard "Valid OAuth Redirect URIs"
 export const REDIRECT_URI = process.env.REDIRECT_URI;
 
-export const META_GRAPH_URL = process.env.META_GRAPH_URL;
-
-console.log("APP_ID:", APP_ID);
-console.log("APP_SECRET:", APP_SECRET);

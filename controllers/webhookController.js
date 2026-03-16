@@ -1,6 +1,4 @@
-// VERIFY TOKEN (must match Meta dashboard)
-const VERIFY_TOKEN = "my_secret_token_123";
-
+import { VERIFY_TOKEN } from "../config/config.js";
 
 // STEP 1 — Webhook Verification
 export const verifyWebhook = (req, res) => {

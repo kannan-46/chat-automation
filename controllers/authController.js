@@ -88,8 +88,6 @@ export const handleAuthCallback = async (req, res) => {
     );
 
     console.log(`Connected Instagram: @${igUsername}`);
-console
-
 
     res.send(`
       <h2>Instagram Connected</h2>
